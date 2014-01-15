@@ -26,7 +26,7 @@ public interface BagInterface<T> {
      * @return true if the addition is successful, or false if not 
      */
     public boolean add(T newEntry);
-    
+    //dagaga
     /** 
      * Removes one unspecified entry from this bag, if possible.
      * Entry must be randomly chosen. (NOTE: the book's code
