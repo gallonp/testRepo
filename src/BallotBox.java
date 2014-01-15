@@ -1,14 +1,14 @@
 
 public class BallotBox {
-	BagInterface<Ballot> ballotBox;
+	private BagInterface<Ballot> ballotBox;
 	
 	public BallotBox(){
 		ballotBox = new ArrayListBag<Ballot>();
 	}
 	
-	public boolean voteFor(String name, double bribe){
+	public boolean voteFor(String name, int bribe){
 		Ballot newBallot = new Ballot(name, bribe);
-		ballotBox.add(newBallot);
+		this.ballotBox.add(newBallot);
 		return true;
 	}
 	
@@ -23,8 +23,12 @@ public class BallotBox {
 	
 	public boolean remove(){
 		//if empty?
-		ballotBox.remove();
-		return true;
+		if (!ballotBox.isEmpty()) {
+			ballotBox.remove();
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	public int currentVotes(){
@@ -36,7 +40,12 @@ public class BallotBox {
 	}
 	
 	public String allVotes(){
-		return null;
+		Object[] ballotArray = ballotBox.toArray();
+		StringBuffer output = new StringBuffer();
+		for (int i =0; i < ballotArray.length ; i++) {
+			output.append(ballotArray[i]+"\n");
+		}
+			return output.toString();
 	}
 	
 	

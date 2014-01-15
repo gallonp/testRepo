@@ -24,8 +24,13 @@ public class ArrayListBag<T> implements BagInterface<T> {
 	@Override
 	public T remove() {
 		// if empty???
-		int idx = (int) Math.floor(Math.random()*(bag.size()+1));
-		return bag.remove(idx);
+		if (!this.isEmpty()){
+			double inn  =Math.random()*bag.size();
+			int idx = (int) Math.floor(inn);
+			return bag.remove(idx);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -43,7 +48,8 @@ public class ArrayListBag<T> implements BagInterface<T> {
 		Iterator<T> bagIterator = bag.iterator();
 		int frequency = 0;
 		while (bagIterator.hasNext()){
-			if (bagIterator.next().equals(anEntry)){
+			T next = bagIterator.next();
+			if (next.equals(anEntry)){
 				frequency++;
 			}
 		}
@@ -59,7 +65,7 @@ public class ArrayListBag<T> implements BagInterface<T> {
 	public T[] toArray() {
 		// TODO Auto-generated method stub
 		@SuppressWarnings("unchecked")
-		T[] obj = (T[])new Object();
+		T[] obj = (T[])new Object[0];
 		return bag.toArray(obj);
 	}
 

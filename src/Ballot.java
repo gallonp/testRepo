@@ -1,15 +1,21 @@
 
 public class Ballot {
 	public String name;
-	public double bribe;
+	public int bribe;
 	
-	public Ballot(String name, double bribe){
+	public Ballot(String name, int bribe){
 		this.name = name;
 		this.bribe = bribe;
 	}
 	
-	public boolean equals(Ballot another){
-		return this.name.equalsIgnoreCase(another.name);
+	public boolean equals(Object another){
+		if (another == this){
+			return true;
+		} else if (another.getClass() == this.getClass()){
+			Ballot anotherBallot = (Ballot)another;
+			return this.name.equalsIgnoreCase(anotherBallot.name);
+		}
+		return false;
 	}
 	
 	public String toString(){
