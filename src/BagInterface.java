@@ -27,6 +27,7 @@ public interface BagInterface<T> {
      */
     public boolean add(T newEntry);
     //dagaga
+    //hijhhjk
     /** 
      * Removes one unspecified entry from this bag, if possible.
      * Entry must be randomly chosen. (NOTE: the book's code
