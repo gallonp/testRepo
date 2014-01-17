@@ -66,31 +66,52 @@ public class Election {
 		}
 	}
 	
+	/**
+	 * Allow user to enter a vote
+	 * @param ballotBox
+	 */
 	public static void vote(BallotBox ballotBox){
 		String name = "";
 		int bribe = 0;
-		System.out.println("Please enter the candidate name, followed by space and the bribe amount:");
+		
 		try{
+			System.out.print("Please enter the candidate name:");
 			Scanner scanner = new Scanner(new InputStreamReader(System.in));
 			name = scanner.next();
+			System.out.print("Please enter the bribe amount:");
+			scanner = new Scanner(new InputStreamReader(System.in));
 			bribe = scanner.nextInt();
+			ballotBox.voteFor(name, bribe);
+			System.out.println("you voted for: " + name);
+			System.out.println("you bribed for: " + bribe);
 		} catch (NoSuchElementException e) {
 			System.out.println("bad input! try again!");
 		}
-		System.out.println("you voted for: " + name);
-		System.out.println("you bribed for: " + bribe);
-		ballotBox.voteFor(name, bribe);
+
 	}
 	
+	/**
+	 * Print out all the votes in the ballot box
+	 * @param ballotBox
+	 */
 	public static void printAllVotes(BallotBox ballotBox){
 		System.out.println(ballotBox.allVotes());
 	}
 
+	/**
+	 * Print out the votes for a candidate given by the user
+	 * @param ballotBox
+	 * @param candidate
+	 */
 	public static void countVotes(BallotBox ballotBox, String candidate){
-		System.out.println(candidate + "has " + ballotBox.countVotesFor(candidate) + " votes");
+		System.out.println(candidate + " has " + ballotBox.countVotesFor(candidate) + " votes");
 		
 	}
 	
+	/**
+	 * Remove a vote randomly from the ballot box
+	 * @param ballotBox
+	 */
 	public static void removeVote(BallotBox ballotBox){
 		if (ballotBox.remove()) {
 			System.out.println("sucessfully removed one vote!");
@@ -99,10 +120,18 @@ public class Election {
 		}	
 	}
 	
+	/**
+	 * print out number of the votes in the ballot box
+	 * @param ballotBox
+	 */
 	public static void getAllVotesCount(BallotBox ballotBox){
 		System.out.println("Current votes number is: "+ballotBox.currentVotes());
 	}
 	
+	/**
+	 * Empty the ballot box
+	 * @param ballotBox
+	 */
 	public static void emptyTheBox(BallotBox ballotBox){
 		ballotBox.emptyTheBox();
 		System.out.println("Successfully emptied the box");
