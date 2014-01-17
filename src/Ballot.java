@@ -3,6 +3,12 @@ public class Ballot {
 	public String name;
 	public int bribe;
 	
+	/**
+	 * Constructor of a ballot, should provide the name
+	 * of the candidate and the bribe amount
+	 * @param name
+	 * @param bribe
+	 */
 	public Ballot(String name, int bribe){
 		this.name = name;
 		this.bribe = bribe;
